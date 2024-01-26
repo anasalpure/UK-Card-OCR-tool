@@ -2,6 +2,7 @@ import { Box, Fab } from "@mui/material";
 import Typography from "../components/Typography";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import backgroundImage from "@/assets/images/CardPlaceholder.svg";
+import { VisuallyHiddenInput } from "../components";
 
 export function MainSection() {
   return (
@@ -11,9 +12,10 @@ export function MainSection() {
       </Typography>
 
       <Box sx={{ mt: 4 }}>
-        <Fab variant="extended" color="primary">
+        <Fab component="label" variant="extended" color="primary">
           <NavigationIcon sx={{ mr: 1 }} />
           Unload a card
+          <VisuallyHiddenInput type="file" />
         </Fab>
       </Box>
 
