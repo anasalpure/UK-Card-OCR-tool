@@ -1,0 +1,29 @@
+import { Box, Fab } from "@mui/material";
+import Typography from "../components/Typography";
+import NavigationIcon from "@mui/icons-material/Navigation";
+import backgroundImage from "@/assets/images/CardPlaceholder.svg";
+
+export function MainSection() {
+  return (
+    <Box sx={{ textAlign: "center" }}>
+      <Typography color="primary" variant="h1" marked="center">
+        Card OCR tool
+      </Typography>
+      <Box sx={{ mt: 4 }}>
+        <Fab variant="extended" color="primary">
+          <NavigationIcon sx={{ mr: 1 }} />
+          Start
+        </Fab>
+      </Box>
+      <img src={backgroundImage} alt="Card reader Hero logo" />
+
+      <Typography
+        color="primary"
+        variant="h5"
+        sx={{ mb: 4, mt: { xs: 4, sm: 10 } }}
+      >
+        Enjoy secret offers up to -70% off the best Card readers.
+      </Typography>
+    </Box>
+  );
+}
