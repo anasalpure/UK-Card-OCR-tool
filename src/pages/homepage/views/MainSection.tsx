@@ -9,12 +9,14 @@ export function MainSection() {
       <Typography color="primary" variant="h1" marked="center">
         Card OCR tool
       </Typography>
+
       <Box sx={{ mt: 4 }}>
         <Fab variant="extended" color="primary">
           <NavigationIcon sx={{ mr: 1 }} />
-          Start
+          Unload a card
         </Fab>
       </Box>
+
       <img src={backgroundImage} alt="Card reader Hero logo" />
 
       <Typography
