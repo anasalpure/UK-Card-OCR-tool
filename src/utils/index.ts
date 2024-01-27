@@ -73,6 +73,5 @@ export function getFieldsFromText(lines: any): FieldsType {
   for (const label in groups) {
     output[label] = ValueParser.parse(label, groups[label]);
   }
-  console.log(output);
   return output;
 }

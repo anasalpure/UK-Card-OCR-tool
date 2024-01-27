@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Fab, Grid } from "@mui/material";
+import { Box, TextField, Fab, Grid } from "@mui/material";
 import Typography from "../components/Typography";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -19,6 +19,14 @@ export function MainSection() {
 
   const uploadedFileChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log(event);
+  };
+
+  const renderFields = () => {
+    let output = [];
+    for (const label in fields) {
+      output.push(<TextField label={label} defaultValue={fields[label]} />);
+    }
+    return output;
   };
 
   return (
@@ -45,27 +53,30 @@ export function MainSection() {
         </Fab>
         <Grid container spacing={2} sx={{ my: { xs: 2, sm: 5 } }}>
           <Grid item xs={6} md={4}>
-            {image && <img src={image} alt="Card reader Hero logo" />}
+            {image && (
+              <img src={image} alt="Card reader Hero logo" width="100%" />
+            )}
           </Grid>
+
           <Grid item xs={6} md={8}>
             <Box>
               {isLoading ? <CircularProgress sx={{ mt: 4 }} /> : ""}
 
-              <Typography
-                color="primary"
-                variant="h4"
+              <Box
+                component="form"
                 sx={{
-                  mt: { xs: 2, sm: 5 },
-                  wordWrap: "break-word",
+                  "& .MuiTextField-root": { m: 1, width: "25ch" },
                 }}
+                noValidate
+                autoComplete="off"
               >
-                fields
-              </Typography>
+                {fields && renderFields()}
+              </Box>
             </Box>
           </Grid>
         </Grid>
       </Box>
-      <img src={backgroundImage} alt="Card reader Hero logo" />
+      <img src={backgroundImage} alt="Card reader Hero logo" width="100%" />
 
       <Typography
         color="primary"
