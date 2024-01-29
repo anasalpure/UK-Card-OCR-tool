@@ -14,7 +14,7 @@ export const useCardReader = () => {
     });
 
     const {
-      data: { confidence, lines },
+      data: { lines },
     } = await worker.recognize(
       imageLink,
       { rotateAuto: true },
