@@ -5,7 +5,7 @@ export class ValueParser {
     [x: string]: (words: Array<IWord>) => string;
   } = {
     name: ValueParser.nameParser,
-    // birthDate: ValueParser.birthDateParser,
+    birthDate: ValueParser.birthDateParser,
     // gender: ValueParser.genderParser,
   };
 
@@ -40,6 +40,7 @@ export class ValueParser {
       if (length >= MAX_LENGTH) return;
       if (word.text.length > 1) {
         result += word.text + " ";
+        if (result.includes("-") || result.includes("/")) length += 2;
         length++;
       }
     });

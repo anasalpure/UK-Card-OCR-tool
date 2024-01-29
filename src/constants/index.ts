@@ -5,14 +5,13 @@ export const SUPPORTED_FIELDS: SupportedGroup = {
   name: [
     "name",
     "surname",
-    "given name",
-    "given names",
-    "full name",
+    "given", //given name
+    "full",
     "fname",
-    "first name",
+    "first",
     "lname",
-    "last name",
+    "last",
   ],
-  birthDate: ["date of birth", "dob", "008"],
+  birthDate: ["date", "birth", "dob", "008"],
   gender: ["gender", "sex"],
 };

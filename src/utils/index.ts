@@ -20,10 +20,10 @@ export function searchForLabel(keyword: string): [boolean, string] {
   for (const supportedLabel in SUPPORTED_FIELDS) {
     for (const key in SUPPORTED_FIELDS[supportedLabel]) {
       const label = SUPPORTED_FIELDS[supportedLabel][key];
-      console.log({ keyword, label });
+      // console.log({ keyword, label });
+
       if (keyword.includes(label)) {
         return [true, supportedLabel];
-        break;
       }
     }
   }
@@ -58,21 +58,25 @@ export function groupLinesByLabel(lines: Array<Array<IWord>>) {
       for (let j = 0; j < lineWords.length; j++) {
         const word = lineWords[j];
         if (word.isLabel) {
-          lastLabel = word.label || word.text;
-          groups[lastLabel] = [];
+          lastLabel = word.label || "";
+          if (typeof groups[lastLabel] == "undefined") {
+            groups[lastLabel] = [];
+          }
+          break;
         } else if (lastLabel) {
           groups[lastLabel].push(word);
         }
       }
     }
   }
+  console.log({ groups });
 
   return groups;
 }
 
 export function getFieldsFromText(lines: any): FieldsType {
   let output: FieldsType = {};
-  console.log({ lines });
+  // console.log({ lines });
 
   let confidentLines: Array<Array<IWord>> = [];
 
@@ -82,6 +86,7 @@ export function getFieldsFromText(lines: any): FieldsType {
       confidentLines.push(filterUnConfidentWords(words));
     }
   }
+  // console.log({ confidentLines });
   let groups = groupLinesByLabel(confidentLines);
   for (const label in groups) {
     output[label] = ValueParser.parse(label, groups[label]);
