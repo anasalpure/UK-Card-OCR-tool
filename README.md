@@ -1,11 +1,16 @@
-## OCR Card APP
+## OCR UK Card APP
 
-this app is a web based application that helps you to extract sencitive data from ID cards. This application is built with React + TypeScript + Vite.
+this app is a web-based application that helps you to extract sensitive data from ID cards. This application is built with React + TypeScript + Vite.
 https://github.com/naptha/tesseract.js
+
+### Live Demo
+Live link on [Vercel](https://uk-card-ocr-tool.vercel.app/)
+
+You can use this [image](/public/uk-id-card.webp)
 
 ### Run project
 
-To run the application follow this steps:
+To run the application follow these steps:
 
 1- Clone the repository
 
