@@ -4,9 +4,9 @@ this app is a web-based application that helps you to extract sensitive data fro
 https://github.com/naptha/tesseract.js
 
 ### Live Demo
-[Live link on [Vercel]([doc:linking-to-pages#anchor-links](https://uk-card-ocr-tool.vercel.app/))
+Live link on [Vercel](https://uk-card-ocr-tool.vercel.app/)
 
-Ypou can use this [image](/public/uk-id-card.webp)
+You can use this [image](/public/uk-id-card.webp)
 
 ### Run project
 
