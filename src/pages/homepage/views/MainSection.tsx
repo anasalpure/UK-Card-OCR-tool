@@ -72,13 +72,13 @@ export function MainSection() {
         </Fab>
 
         <Grid container spacing={2} sx={{ my: { xs: 2, sm: 5 } }}>
-          <Grid item ms={6} md={4}>
+          <Grid item xs={12} md={4}>
             {image && (
               <img src={image} alt="Card reader Hero logo" width="100%" />
             )}
           </Grid>
 
-          <Grid item ms={6} md={8}>
+          <Grid item xs={12} md={8}>
             <Box>
               {isLoading ? <CircularProgress sx={{ mt: 4 }} /> : ""}
 
