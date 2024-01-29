@@ -8,23 +8,30 @@ import { VisuallyHiddenInput } from "../components";
 import { useCardReader } from "../hooks";
 
 export function MainSection() {
-  const [image, setImage] = useState(
-    "http://localhost:5173/public/uk-id-card.webp"
-  );
+  const [image, setImage] = useState("");
   const { fields, isLoading, startReading } = useCardReader();
 
-  const handleCardRead = () => {
-    startReading(image);
+  const handleTestCardRead = () => {
+    const testImage = "/public/uk-id-card.webp";
+    setImage(testImage);
+    startReading(testImage);
   };
 
   const uploadedFileChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event);
+    if (event.target.files && event.target.files[0]) {
+      // Create a URL pointing to the selected file
+      var fileUrl = URL.createObjectURL(event.target.files[0]);
+      setImage(fileUrl);
+      startReading(fileUrl);
+    }
   };
 
   const renderFields = () => {
     let output = [];
     for (const label in fields) {
-      output.push(<TextField label={label} defaultValue={fields[label]} />);
+      output.push(
+        <TextField key={label} label={label} defaultValue={fields[label]} />
+      );
     }
     return output;
   };
@@ -47,10 +54,11 @@ export function MainSection() {
           <VisuallyHiddenInput type="file" onChange={uploadedFileChanged} />
         </Fab>
 
-        <Fab onClick={handleCardRead} variant="extended" color="primary">
+        <Fab onClick={handleTestCardRead} variant="extended" color="primary">
           <NavigationIcon sx={{ mr: 1 }} />
           Test card
         </Fab>
+
         <Grid container spacing={2} sx={{ my: { xs: 2, sm: 5 } }}>
           <Grid item xs={6} md={4}>
             {image && (

@@ -10,6 +10,26 @@ export function getFlattedSupportedFields() {
   return flatted;
 }
 
+export function getLabelOf(keyword: string) {
+  let labelKeyword = keyword.replace(/[^\w]|\(|\)/g, "");
+  if (!labelKeyword) return false;
+  return labelKeyword;
+}
+export function searchForLabel(keyword: string): [boolean, string] {
+  if (!keyword) return [false, ""];
+  for (const supportedLabel in SUPPORTED_FIELDS) {
+    for (const key in SUPPORTED_FIELDS[supportedLabel]) {
+      let label = SUPPORTED_FIELDS[supportedLabel][key];
+      console.log({ keyword, label });
+      if (keyword.includes(label)) {
+        return [true, supportedLabel];
+        break;
+      }
+    }
+  }
+  return [false, ""];
+}
+
 export function filterUnConfidentWords(
   words: Array<IWord>,
   supportedFields: Array<string>
@@ -18,14 +38,11 @@ export function filterUnConfidentWords(
     //remove white chars
     word.text = word.text.replace(/\s/g, "").toLowerCase();
     word.isLabel = false;
-    if (supportedFields.includes(word.text)) {
+    let label = getLabelOf(word.text);
+    const [isLabel, labelKey] = searchForLabel(label || "");
+    if (isLabel) {
       word.isLabel = true;
-      for (const label in SUPPORTED_FIELDS) {
-        if (SUPPORTED_FIELDS[label].includes(word.text)) {
-          word.label = label;
-          break;
-        }
-      }
+      word.label = labelKey;
       return true;
     }
     // word it's confidence more than 40%
@@ -58,6 +75,7 @@ export function groupLinesByLabel(lines: Array<Array<IWord>>) {
 
 export function getFieldsFromText(lines: any): FieldsType {
   let output: FieldsType = {};
+  console.log({ lines });
 
   let confidentLines: Array<Array<IWord>> = [];
   const supportedFields = getFlattedSupportedFields();
@@ -68,7 +86,6 @@ export function getFieldsFromText(lines: any): FieldsType {
       confidentLines.push(filterUnConfidentWords(words, supportedFields));
     }
   }
-
   let groups = groupLinesByLabel(confidentLines);
   for (const label in groups) {
     output[label] = ValueParser.parse(label, groups[label]);
