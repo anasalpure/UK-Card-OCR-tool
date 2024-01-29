@@ -1,4 +1,4 @@
-## OCR Card APP
+## OCR UK Card APP
 
 this app is a web-based application that helps you to extract sensitive data from ID cards. This application is built with React + TypeScript + Vite.
 https://github.com/naptha/tesseract.js
