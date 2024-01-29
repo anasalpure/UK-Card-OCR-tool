@@ -42,31 +42,43 @@ export function MainSection() {
         Card OCR tool
       </Typography>
 
-      <Box sx={{ mt: 4 }}>
+      <Box
+        sx={{
+          mt: 3,
+          justifyContent: "center",
+          display: "flex",
+          flexWrap: "wrap",
+        }}
+      >
         <Fab
           component="label"
           variant="extended"
           color="primary"
-          sx={{ mr: 2 }}
+          sx={{ mr: 2, mt: 1 }}
         >
           <NavigationIcon sx={{ mr: 1 }} />
           Upload a card image
           <VisuallyHiddenInput type="file" onChange={uploadedFileChanged} />
         </Fab>
 
-        <Fab onClick={handleTestCardRead} variant="extended" color="primary">
+        <Fab
+          onClick={handleTestCardRead}
+          variant="extended"
+          color="primary"
+          sx={{ mt: 1 }}
+        >
           <NavigationIcon sx={{ mr: 1 }} />
           Test card
         </Fab>
 
         <Grid container spacing={2} sx={{ my: { xs: 2, sm: 5 } }}>
-          <Grid item xs={6} md={4}>
+          <Grid item ms={6} md={4}>
             {image && (
               <img src={image} alt="Card reader Hero logo" width="100%" />
             )}
           </Grid>
 
-          <Grid item xs={6} md={8}>
+          <Grid item ms={6} md={8}>
             <Box>
               {isLoading ? <CircularProgress sx={{ mt: 4 }} /> : ""}
 
