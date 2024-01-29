@@ -6,7 +6,6 @@ import {
   ButtonProps as MuiButtonProps,
   Button,
   DialogTitle,
-  Paper,
 } from "@mui/material";
 
 export const GenericDialog = ({

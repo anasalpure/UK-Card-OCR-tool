@@ -11,7 +11,7 @@ export function getFlattedSupportedFields() {
 }
 
 export function getLabelOf(keyword: string) {
-  let labelKeyword = keyword.replace(/[^\w]|\(|\)/g, "");
+  const labelKeyword = keyword.replace(/[^\w]|\(|\)/g, "");
   if (!labelKeyword) return false;
   return labelKeyword;
 }
@@ -19,7 +19,7 @@ export function searchForLabel(keyword: string): [boolean, string] {
   if (!keyword) return [false, ""];
   for (const supportedLabel in SUPPORTED_FIELDS) {
     for (const key in SUPPORTED_FIELDS[supportedLabel]) {
-      let label = SUPPORTED_FIELDS[supportedLabel][key];
+      const label = SUPPORTED_FIELDS[supportedLabel][key];
       console.log({ keyword, label });
       if (keyword.includes(label)) {
         return [true, supportedLabel];
@@ -30,10 +30,7 @@ export function searchForLabel(keyword: string): [boolean, string] {
   return [false, ""];
 }
 
-export function filterUnConfidentWords(
-  words: Array<IWord>,
-  supportedFields: Array<string>
-): Array<IWord> {
+export function filterUnConfidentWords(words: Array<IWord>): Array<IWord> {
   words = words.filter((word) => {
     //remove white chars
     word.text = word.text.replace(/\s/g, "").toLowerCase();
@@ -78,12 +75,11 @@ export function getFieldsFromText(lines: any): FieldsType {
   console.log({ lines });
 
   let confidentLines: Array<Array<IWord>> = [];
-  const supportedFields = getFlattedSupportedFields();
-  console.log({ supportedFields });
+
   for (const index in lines) {
     let words: Array<IWord> = lines[index]["words"];
     if (words) {
-      confidentLines.push(filterUnConfidentWords(words, supportedFields));
+      confidentLines.push(filterUnConfidentWords(words));
     }
   }
   let groups = groupLinesByLabel(confidentLines);
