@@ -50,7 +50,7 @@ export function MainSection() {
           sx={{ mr: 2 }}
         >
           <NavigationIcon sx={{ mr: 1 }} />
-          Unload a card
+          Upload a card image
           <VisuallyHiddenInput type="file" onChange={uploadedFileChanged} />
         </Fab>
 
