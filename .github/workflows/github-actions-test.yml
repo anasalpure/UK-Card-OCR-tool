@@ -24,7 +24,6 @@ jobs:
           file: ./Dockerfile
           push: true
           context: .
-          tags: 1.2
-          labels: 1.2
+          tags: anasalpure/ocr-react-app:1.1
           build-args: |
             VERSION=1.1
