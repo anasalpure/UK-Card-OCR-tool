@@ -39,7 +39,7 @@ export function MainSection() {
   return (
     <Box sx={{ textAlign: "center" }}>
       <Typography color="primary" variant="h1" marked="center">
-        Card OCR tool
+        Card OCR tool V1.0
       </Typography>
 
       <Box

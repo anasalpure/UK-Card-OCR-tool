@@ -4,11 +4,18 @@ this app is a web-based application that helps you to extract sensitive data fro
 https://github.com/naptha/tesseract.js
 
 ### Live Demo
+
 Live link on [Vercel](https://uk-card-ocr-tool.vercel.app/)
 
 You can use this [image](/public/uk-id-card.webp)
 
 ### Run project
+
+## Run project using Docker
+
+anasalpure/ocr-react-app:1.1
+
+## Run project locally
 
 To run the application follow these steps:
 
