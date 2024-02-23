@@ -28,3 +28,7 @@ To run the application follow these steps:
 3- To run the project locally run the following command:
 
 `yarn run dev`
+
+or
+
+`yarn dev`
