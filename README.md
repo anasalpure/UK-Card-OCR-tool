@@ -13,7 +13,7 @@ You can use this [image](/public/uk-id-card.webp)
 
 ## Run project using Docker
 
-anasalpure/ocr-react-app:1.1
+`docker pull anasalpure/ocr-react-app:1.1`
 
 ## Run project locally
 
